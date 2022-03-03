@@ -1,96 +1,60 @@
-import ButtonRemove from './componentes/buttonRemove.js'
+import ButtonRemove from './components/buttonRemove.js'
+import getImcBy from './utils/imcCalculator.js';
+import TableCellElementCreator from './utils/tableCellElementCreator.js';
 
-const novoPaciente = document.querySelector('[data-form-btn-adiciona]'); //usando um data- (data attribute) para capturar o elemento
+const novoPaciente = document.querySelector('[button-calculate]');
 
-    novoPaciente.addEventListener('click', (eventoDoClick) => { //quando o evento de click é "escutado" o navegador envia um objeto, por 
-                                                                // "debaixo dos panos", como parâmetro contendo os dados desse evento.
-                                                                // Basta nomear o objeto passado como parâmetro. 
-                                                                // Aqui useio nome de eventoDoClick.
+    novoPaciente.addEventListener('click', (event) => {
+        event.preventDefault();
 
-        eventoDoClick.preventDefault();  //previne o evento padrão de um form que é enviar dados para um servidor web. 
-                                        // Para não ocorrer o refresh da página
-        const formNovoPacient = document.querySelector('[data-form-novo-pacient]');//cria uma váriavel para receber os dados form Novo Paciente.
+        const formPersonData = document.querySelector('[form-person-data]');
+        const person = getPersonDataBy(formPersonData);
 
-        console.log(formNovoPacient);
+        const tableCellElementCreator = new TableCellElementCreator();
 
-        const objNovoPacient = montaObjetoPaciente(formNovoPacient); //Chama a função que cria um objeto com os dados recebidos do form Novo Paciente.
-
-        const idade_input = objNovoPacient.idade; //Aqui criei as variáveis para os atributos do objeto recebido
-        const peso_input = objNovoPacient.peso;
-        const altura_input = objNovoPacient.altura;
-        const imc_input = objNovoPacient.imc;       
-        
-        const tabela = document.querySelector('[table-body-person]'); //criei uma váriavel para receber o seletor do DOM da tabela Paciente.   
-
-        //Aqui criei uma varável para cada elemento <td> da linha, 
-        //que conterão os dados dos atributos do novo paciente e mais tarde serão 
-        //apensados a uma nova linha <tr> da tabela.
-        
-
-        const conteudoIdade = document.createElement('td');
-        conteudoIdade.innerHTML = idade_input;
-        conteudoIdade.classList.add('numerico');
-        
-        const conteudoImc = document.createElement(`td`);
-        conteudoImc.innerHTML = imc_input;
-        conteudoImc.classList.add('numerico'); //atribuí a classe css numérico a nova célula criada
+        const ageElement = tableCellElementCreator.createTdElementTypeNumberWith(person.age);
+        const genderElement = tableCellElementCreator.createTdElementTypeTextWith(person.gender);
+        const heightElement = tableCellElementCreator.createTdElementTypeNumberWith(person.height);
+        const weightElement = tableCellElementCreator.createTdElementTypeNumberWith(person.weight);
+        const imcElement = tableCellElementCreator.createTdElementTypeNumberWith(person.imc);
+        const classificationElement = tableCellElementCreator.createTdElementTypeTextWith(person.classification);
+        const actionElement = tableCellElementCreator.createTdElementTypeActionBy(ButtonRemove());
 
 
-        const conteudoPeso = document.createElement(`td`);
-        conteudoPeso.innerHTML = peso_input;
-        conteudoPeso.classList.add('numerico'); //atribuí a classe css numérico a nova célula criada
+        const newLine = document.createElement('tr');
+        newLine.classList.add('table-line');
 
-        const conteudoAltura = document.createElement(`td`);        
-        conteudoAltura.innerHTML = altura_input;
-        conteudoAltura.classList.add('numerico'); //atribuí a classe css numérico a nova célula criada
+         newLine.appendChild(ageElement);
+         newLine.appendChild(genderElement);
+         newLine.appendChild(heightElement);
+         newLine.appendChild(weightElement);
+         newLine.appendChild(imcElement);
+         newLine.appendChild(classificationElement);
+         newLine.appendChild(actionElement);
 
-        const conteudoAcao = document.createElement(`td`);    
-        conteudoAcao.classList.add('acao'); //atribuí a classe css acao a nova célula criada
-        conteudoAcao.appendChild(ButtonRemove());
-
-
-        const novaLinha = document.createElement(`tr`); //Aqui criei um elemento <tr> nova linha que receberá seu elmento filho
-                                                        // a <td> criada anteriormente;
-
-        novaLinha.classList.add('linhas-pacientes'); //atribuí a classe css a nova linha criada
-
-         //Aqui apensamos as variáveis contendo os elementos <td> 
-         // e seus conteúdos a nova linha <tr>.
-
-        novaLinha.appendChild(conteudoIdade);
-        novaLinha.appendChild(conteudoImc);
-        novaLinha.appendChild(conteudoPeso);
-        novaLinha.appendChild(conteudoAltura);
-        novaLinha.appendChild(conteudoAcao);
-
-        tabela.appendChild(novaLinha); //Apensei a nova linha a tabela.
+        const tabela = document.querySelector('[table-body-result]');
+        tabela.appendChild(newLine);
         
 
-        formNovoPacient.reset(); //Reset do formulário limpando os campos.
-        
+        formPersonData.reset();
     });
 
-    function montaObjetoPaciente(form){
+    function getPersonDataBy(form){
+        let age = form.inputAge.value;
+        let gender = form.inputGender.options[form.inputGender.selectedIndex].value;
+        let height = form.inputHeight.value;
+        let weight = form.inputWeight.value;
+        let imc = getImcBy(weight, height);
+        let classification = "none";
         
-        var objPaciente = { //criando um objeto paciente
-            idade: form.inputIdade.value, 
-            peso: form.inputPeso.value,
-            altura: form.inputAltura.value,
-            imc: calculaImc(form.inputPeso.value, form.inputAltura.value)
-            
+        return {
+            age: age,
+            gender: gender,
+            height: height,
+            weight: weight,
+            imc: imc,
+            classification: classification
         }
-        return objPaciente; //retorna o objeto
-        
-    }
-
-    function calculaImc(peso, altura){
-        let imc = 0;
-        let cm = 0;
-        
-        cm = altura / 100;
-        imc = peso / (cm * cm);
-
-        return imc.toFixed(2);
     }
     
 
