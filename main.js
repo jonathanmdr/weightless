@@ -1,4 +1,4 @@
-import BotaoApagar from './componentes/botaoApagar.js'
+import ButtonRemove from './componentes/buttonRemove.js'
 
 const novoPaciente = document.querySelector('[data-form-btn-adiciona]'); //usando um data- (data attribute) para capturar o elemento
 
@@ -12,8 +12,6 @@ const novoPaciente = document.querySelector('[data-form-btn-adiciona]'); //usand
         const formNovoPacient = document.querySelector('[data-form-novo-pacient]');//cria uma váriavel para receber os dados form Novo Paciente.
 
         const objNovoPacient = montaObjetoPaciente(formNovoPacient); //Chama a função que cria um objeto com os dados recebidos do form Novo Paciente.
-
-        people.push(objNovoPacient);
 
         const idade_input = objNovoPacient.idade; //Aqui criei as variáveis para os atributos do objeto recebido
         const peso_input = objNovoPacient.peso;
@@ -46,7 +44,7 @@ const novoPaciente = document.querySelector('[data-form-btn-adiciona]'); //usand
 
         const conteudoAcao = document.createElement(`td`);    
         conteudoAcao.classList.add('acao'); //atribuí a classe css acao a nova célula criada
-        conteudoAcao.appendChild(BotaoApagar());
+        conteudoAcao.appendChild(ButtonRemove());
 
 
         const novaLinha = document.createElement(`tr`); //Aqui criei um elemento <tr> nova linha que receberá seu elmento filho
@@ -67,29 +65,30 @@ const novoPaciente = document.querySelector('[data-form-btn-adiciona]'); //usand
         
 
         formNovoPacient.reset(); //Reset do formulário limpando os campos.
+        
     });
 
-function montaObjetoPaciente(form){
-    
-    var objPaciente = { //criando um objeto paciente
-        idade: form.inputIdade.value, 
-        peso: form.inputPeso.value,
-        altura: form.inputAltura.value,
-        imc: calculaImc(form.inputPeso.value, form.inputAltura.value)
+    function montaObjetoPaciente(form){
+        
+        var objPaciente = { //criando um objeto paciente
+            idade: form.inputIdade.value, 
+            peso: form.inputPeso.value,
+            altura: form.inputAltura.value,
+            imc: calculaImc(form.inputPeso.value, form.inputAltura.value)
+            
+        }
+        return objPaciente; //retorna o objeto
         
     }
-    return objPaciente; //retorna o objeto
-    
-}
 
-function calculaImc(peso, altura){
-    let imc = 0;
-    let cm = 0;
-    
-    cm = altura / 100;
-    imc = peso / (cm * cm);
+    function calculaImc(peso, altura){
+        let imc = 0;
+        let cm = 0;
+        
+        cm = altura / 100;
+        imc = peso / (cm * cm);
 
-    return imc.toFixed(2);
-}
+        return imc.toFixed(2);
+    }
     
 
