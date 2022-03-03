@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,500&display=swap">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="styles/reset.css">
         <link rel="stylesheet" href="styles/style.css">
         <link rel="icon" href="img/icon.png">
@@ -27,7 +28,7 @@
                 <form id="formPersonData" action="" form-person-data>
                     <div class="group">
                         <label for="inputAge">Age:</label>
-                        <input type="text" id="inputAge" name="inputAge" class="field" placeholder="Input your age">
+                        <input type="number" id="inputAge" name="inputAge" class="field" placeholder="Input your age">
                     </div>
                     <div class="group">
                         <label for="inputGender">Gender:</label>
@@ -39,11 +40,11 @@
                     </div>
                     <div class="group">
                         <label for="inputHeight">Height (cm):</label>
-                        <input type="text" id="inputHeight" name="inputHeight" class="field campo-medio" placeholder="Input your height">
+                        <input type="number" id="inputHeight" name="inputHeight" class="field campo-medio" placeholder="Input your height">
                     </div>
                     <div class="group">
                         <label for="inputWeight">Weight (kg):</label>
-                        <input type="text" id="inputWeight" name="inputWeight" class="field campo-medio" placeholder="Input your weight">
+                        <input type="number" id="inputWeight" name="inputWeight" class="field campo-medio" placeholder="Input your weight">
                     </div>
                     
                     <button id="buttonCalculate" class="button button-add" button-calculate>Calculate</button>
@@ -67,9 +68,15 @@
                     <tbody table-body-result></tbody>
                 </table>
             </section>
+
+            <div id="dialog" title="An error occurred" hidden>
+                <p>All fields are required to calculate your IMC, please inform all data and try again.</p>
+            </div>
         </main>
 
         <script type="module" src="main.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     </body>
 </html>

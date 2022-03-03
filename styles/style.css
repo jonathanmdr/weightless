@@ -17,6 +17,12 @@ header h1 {
     font-size: 2em;
 }
 
+label {
+    color: #555;
+    display: block;
+    margin-bottom: .2em;
+}
+
 .container {
     width: 75%;
     height: 100%;
@@ -106,10 +112,4 @@ header h1 {
 
 .button-remove {
     background-color:#f44336;
-}
-
-label {
-    color: #555;
-    display: block;
-    margin-bottom: .2em;
 }

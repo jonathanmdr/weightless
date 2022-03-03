@@ -11,6 +11,14 @@ buttonCalculate.addEventListener('click', (event) => {
 
     const formPersonData = document.querySelector('[form-person-data]');
     const person = getPersonDataBy(formPersonData);
+
+    if (isNotValid(person)) {
+        $(function() {
+            $('#dialog').dialog();
+        });
+        return;
+    }
+
     const tableLineData = createLineElementBy(person);
     const tableRowElement = new TableRowElement(tableLineData);
     const tableLine = tableRowElement.getLineWithData();
@@ -59,4 +67,12 @@ function createLineElementBy(person) {
 function addLineToTable(line) {
     const table = document.querySelector('[table-body-result]');
     table.appendChild(line);
+}
+
+function isNotValid(person) {
+    if (person.age && person.gender && person.height && person.weight) {
+        return false;
+    }
+
+    return true;
 }
