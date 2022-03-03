@@ -11,6 +11,8 @@ const novoPaciente = document.querySelector('[data-form-btn-adiciona]'); //usand
                                         // Para não ocorrer o refresh da página
         const formNovoPacient = document.querySelector('[data-form-novo-pacient]');//cria uma váriavel para receber os dados form Novo Paciente.
 
+        console.log(formNovoPacient);
+
         const objNovoPacient = montaObjetoPaciente(formNovoPacient); //Chama a função que cria um objeto com os dados recebidos do form Novo Paciente.
 
         const idade_input = objNovoPacient.idade; //Aqui criei as variáveis para os atributos do objeto recebido
@@ -18,7 +20,7 @@ const novoPaciente = document.querySelector('[data-form-btn-adiciona]'); //usand
         const altura_input = objNovoPacient.altura;
         const imc_input = objNovoPacient.imc;       
         
-        const tabela = document.querySelector('[data-linha-pacient]'); //criei uma váriavel para receber o seletor do DOM da tabela Paciente.   
+        const tabela = document.querySelector('[table-body-person]'); //criei uma váriavel para receber o seletor do DOM da tabela Paciente.   
 
         //Aqui criei uma varável para cada elemento <td> da linha, 
         //que conterão os dados dos atributos do novo paciente e mais tarde serão 

@@ -23,20 +23,17 @@
     <main>
         <section class="container">
             <h2>People</h2>
-            <table class = "table-imc" data-tabela-pacient>
+            <table class = "table-imc" table-header-person>
                 <thead>
                     <tr>
-                        <th>Idade</th>
+                        <th>Age</th>
                         <th>IMC</th>
-                        <th>Peso (Kg)</th>
-                        <th>Altura (cm)</th>
-                        <th colspan="1">Ação</th>
-                        
+                        <th>Weight (kg)</th>
+                        <th>Height (cm)</th>
+                        <th colspan="1">Action</th>
                     </tr>                
                 </thead>
-                <tbody data-linha-pacient>
-            
-                </tbody>
+                <tbody table-body-person></tbody>
             </table>
         </section>
 
@@ -49,12 +46,20 @@
                     <input type="text" id="inputIdade" name="inputIdade" class="campo" placeholder="Digite a idade: ">
                 </div>
                 <div class="grupo">
-                    <label for="inputPeso">Peso:</label>
-                    <input type="text" id="inputPeso" name="inputPeso" class="campo campo-medio" placeholder="Digite o peso: ">
+                    <label for="inputNome">Gender:</label>
+                    <select id="select-gender" class="campo">
+                        <option value="Man">Man</option>
+                        <option value="Woman">Woman</option>
+                        <option value="Other">Other</option>
+                    </select>
                 </div>
                 <div class="grupo">
                     <label for="inputAltura">Altura (cm):</label>
                     <input type="text" id="inputAltura" name="inputAltura" class="campo campo-medio" placeholder="Digite a altura: ">
+                </div>
+                <div class="grupo">
+                    <label for="inputPeso">Peso:</label>
+                    <input type="text" id="inputPeso" name="inputPeso" class="campo campo-medio" placeholder="Digite o peso: ">
                 </div>
                 
                 <button id="btn-adiciona" class="button button-add" data-form-btn-adiciona>Adicionar</button>
