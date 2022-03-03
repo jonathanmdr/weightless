@@ -4,9 +4,9 @@ import TableCellElementCreator from './components/tableCellElementCreator.js';
 import TableRowElement from './components/tableRowElement.js';
 import ImcRange from './domain/imcRange.js';
 
-const novoPaciente = document.querySelector('[button-calculate]');
+const buttonCalculate = document.querySelector('[button-calculate]');
 
-novoPaciente.addEventListener('click', (event) => {
+buttonCalculate.addEventListener('click', (event) => {
     event.preventDefault();
 
     const formPersonData = document.querySelector('[form-person-data]');
