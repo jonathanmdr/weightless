@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,500&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">    
+    <link rel="icon" href="img/icon.png">
+    <title>IMC</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>
+                IMC Calculator
+            </h1>
+        </div>              
+    </header>
+
+    <main>
+        <section class="container">
+            <h2>People</h2>
+            <table class = "table-imc" data-tabela-pacient>
+                <thead>
+                    <tr>
+                        <th>Idade</th>
+                        <th>IMC</th>
+                        <th>Peso (Kg)</th>
+                        <th>Altura (cm)</th>
+                        <th colspan="1">Ação</th>
+                        
+                    </tr>                
+                </thead>
+                <tbody data-linha-pacient>
+            
+                </tbody>
+            </table>
+        </section>
+
+        <!-- idade, sexo, altura, peso, IMC e a classificação -->
+        <section class="container">
+            <h2>Novo Paciente</h2>
+            <form id = "form-novo-pacient" action="" data-form-novo-pacient>
+                <div class="grupo">
+                    <label for="inputNome">Idade:</label>
+                    <input type="text" id="inputIdade" name="inputIdade" class="campo" placeholder="Digite a idade: ">
+                </div>
+                <div class="grupo">
+                    <label for="inputPeso">Peso:</label>
+                    <input type="text" id="inputPeso" name="inputPeso" class="campo campo-medio" placeholder="Digite o peso: ">
+                </div>
+                <div class="grupo">
+                    <label for="inputAltura">Altura (cm):</label>
+                    <input type="text" id="inputAltura" name="inputAltura" class="campo campo-medio" placeholder="Digite a altura: ">
+                </div>
+                
+                <button id="btn-adiciona" class="button button-add" data-form-btn-adiciona>Adicionar</button>
+            </form>
+        </section>
+        
+
+    </main>
+
+    <footer>
+
+    </footer>
+    <script type="module" src="main.js"></script>
+    
+</body>
+</html>
