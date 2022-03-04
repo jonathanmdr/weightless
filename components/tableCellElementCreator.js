@@ -1,22 +1,27 @@
 export default class TableCellElementCreator {
+
     createTdElementTypeNumberWith(value) {
-        const element = document.createElement('td');
+        const element = this.#createElementBy('td', 'number');
         element.innerHTML = value;
-        element.classList.add('number');
         return element;
     }
-    
+
     createTdElementTypeTextWith(value) {
-        const element = document.createElement('td');
+        const element = this.#createElementBy('td', 'text');
         element.innerHTML = value;
-        element.classList.add('text');
         return element;
     }
-    
+
     createTdElementTypeActionBy(buttonElement) {
-        const element = document.createElement('td');    
-        element.classList.add('action');
+        const element = this.#createElementBy('td', 'action');
         element.appendChild(buttonElement);
         return element;
     }
+
+    #createElementBy(elementType, styleType) {
+        const element = document.createElement(elementType);
+        element.classList.add(styleType);
+        return element;
+    }
+
 }

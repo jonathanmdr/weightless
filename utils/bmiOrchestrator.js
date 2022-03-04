@@ -37,8 +37,8 @@ function getPersonDataBy(form){
     const bmiCalculator = new BmiCalculator();
     let bmi = bmiCalculator.calculateBmiBy(weight, height);
 
-    const bmiRance = new BmiRange(bmi);
-    let classification = bmiRance.getBmiClassification();
+    const bmiRange = new BmiRange(bmi);
+    let classification = bmiRange.getBmiClassification();
 
     return {
         age: age,

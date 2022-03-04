@@ -1,4 +1,4 @@
-const ButtonRemove = ()=> {
+const ButtonRemove = () => {
     const button = document.createElement('button');       
     button.innerText = 'Remove'
     button.classList.add('button');
