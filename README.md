@@ -1,16 +1,15 @@
-# IMC
-IMC - Exercio_2
+# WeightLess
 
-Página simples ( visando treinar HTML, CSS e JavaScript) onde é possível inserir o nome, a altura e o peso
-de uma pessoa e ao clicar em Adicionar, uma nova linha de registro, com o IMC calculado, é adicionada a tabela.
+[![WeightLess CI](https://github.com/jonathanmdr/weightless/actions/workflows/ci.yml/badge.svg)](https://github.com/jonathanmdr/weightless/actions/workflows/ci.yml)
 
-Para excluir a linha basta clicar no botão de Apagar.
+Portal feito com HTML, CSS e JS e fornece uma interface visual para calcular o IMC.
 
-Para iniciar o projeto é preciso instalar o live server: 
-    `npm install -g live-server`
-Para iniciar, digite no terminal:
-    `live-server`
+## Executando o portal
 
-Ou se estiver usando VSCode basta instalar a extensão do Live Server e,
-após recarregar o VsCode, clicar em Go Live no canto inferior direito
-da tela do VsCode.
+> :warning: É necessário ter o `docker` devidamente instalado e configurado.
+
+No terminal digite o seguinte comando abaixo:
+
+```shell
+docker container run --rm --name weightless -p 8080:8080 -d jonathanmdr/weightless:latest
+```
