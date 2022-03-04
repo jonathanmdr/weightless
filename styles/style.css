@@ -15,6 +15,20 @@ header h1 {
     text-align:center;
     margin:auto;
     font-size: 2em;
+    color: #FFF;
+}
+
+header h3 {
+    display:inline-block;
+    right: 5%;
+    top: 2%;
+    position: absolute;
+    font-size: 1.5em;
+    color: #FFF;
+}
+
+a:link {
+    text-decoration: none;
 }
 
 label {
@@ -112,4 +126,13 @@ label {
 
 .button-remove {
     background-color:#f44336;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 5%;
+    width: 100%;
+    color: #4b4949;
+    text-align: center;
 }

@@ -1,8 +1,8 @@
-import ButtonRemove from './components/buttonRemove.js'
-import ImcCalculator from './domain/imcCalculator.js';
-import TableCellElementCreator from './components/tableCellElementCreator.js';
-import TableRowElement from './components/tableRowElement.js';
-import ImcRange from './domain/imcRange.js';
+import ButtonRemove from '../components/buttonRemove.js'
+import BmiCalculator from '../domain/bmiCalculator.js';
+import TableCellElementCreator from '../components/tableCellElementCreator.js';
+import TableRowElement from '../components/tableRowElement.js';
+import BmiRange from '../domain/bmiRange.js';
 
 const buttonCalculate = document.querySelector('[button-calculate]');
 
@@ -34,18 +34,18 @@ function getPersonDataBy(form){
     let height = form.inputHeight.value;
     let weight = form.inputWeight.value;
 
-    const imcCalculator = new ImcCalculator();
-    let imc = imcCalculator.calculateImcBy(weight, height);
+    const bmiCalculator = new BmiCalculator();
+    let bmi = bmiCalculator.calculateBmiBy(weight, height);
 
-    const imgRance = new ImcRange(imc);
-    let classification = imgRance.getImcClassification();
+    const bmiRance = new BmiRange(bmi);
+    let classification = bmiRance.getBmiClassification();
 
     return {
         age: age,
         gender: gender,
         height: height,
         weight: weight,
-        imc: imc,
+        bmi: bmi,
         classification: classification
     }
 }
@@ -58,7 +58,7 @@ function createLineElementBy(person) {
         genderElement: tableCellElementCreator.createTdElementTypeTextWith(person.gender),
         heightElement: tableCellElementCreator.createTdElementTypeNumberWith(person.height),
         weightElement: tableCellElementCreator.createTdElementTypeNumberWith(person.weight),
-        imcElement: tableCellElementCreator.createTdElementTypeNumberWith(person.imc),
+        bmiElement: tableCellElementCreator.createTdElementTypeNumberWith(person.bmi),
         classificationElement: tableCellElementCreator.createTdElementTypeTextWith(person.classification),
         actionElement: tableCellElementCreator.createTdElementTypeActionBy(ButtonRemove())
     }

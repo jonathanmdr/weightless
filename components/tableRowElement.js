@@ -13,7 +13,7 @@ export default class TableRowElement {
         line.appendChild(this.elementObject.genderElement);
         line.appendChild(this.elementObject.heightElement);
         line.appendChild(this.elementObject.weightElement);
-        line.appendChild(this.elementObject.imcElement);
+        line.appendChild(this.elementObject.bmiElement);
         line.appendChild(this.elementObject.classificationElement);
         line.appendChild(this.elementObject.actionElement);
         return line;
